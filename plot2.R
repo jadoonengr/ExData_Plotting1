@@ -5,9 +5,11 @@ setwd("D:/Courses/Data Science/Course 4 - Exploratory Data Analysis/Project 1/")
 # = 2,075,259 × 9 × 8 bytes/numeric
 # = 149418648 bytes = 142.5 MB
 ener = read.csv2("household_power_consumption.txt",na.strings = "?")
+
 # Select relevant Data
 ener$Date <- as.Date(ener$Date,format = "%d/%m/%Y")
 ener <- ener[(ener$Date >= as.Date("2007-02-01") & ener$Date <= as.Date("2007-02-02")),]
+
 # Clean Data
 ener$DateTime <- strptime(paste(ener$Date,ener$Time), format="%Y-%m-%d %H:%M:%S")
 ener$Global_active_power <- as.numeric(levels(ener$Global_active_power))[ener$Global_active_power]
